@@ -12,7 +12,7 @@ class MyHandler(blivedm.BaseHandler):
         with open("data.txt", "a+") as f:
             f.write(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}\n')
 
-TEST_ROOM_IDS = [27529444, ]
+TEST_ROOM_IDS = [10745296, ]
 
 async def main():
     await run_client()
