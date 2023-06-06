@@ -1,9 +1,12 @@
+import os
 import random
 import asyncio
 import blivedm
+import tkinter as tk
+import threading
+
 
 class MyHandler(blivedm.BaseHandler):
-
     async def _on_danmaku(self, client: blivedm.BLiveClient, message: blivedm.DanmakuMessage):
         with open("data.txt", "a+") as f:
             f.write(f'[{client.room_id}] {message.uname}：{message.msg}\n')
@@ -12,7 +15,9 @@ class MyHandler(blivedm.BaseHandler):
         with open("data.txt", "a+") as f:
             f.write(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}\n')
 
-TEST_ROOM_IDS = [10745296, ]
+
+TEST_ROOM_IDS = [22637920, ]
+
 
 async def main():
     await run_client()
@@ -25,5 +30,34 @@ async def run_client():
     client.start()
     await client.join()
 
-if __name__ == '__main__':
+
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.delete_file_button = tk.Button(
+            self.master, text='删除data.txt并自动退出', command=self.delete_file)
+        self.delete_file_button.pack(side="top")
+
+    def delete_file(self):
+        os.remove("data.txt")
+        os._exit(0)
+
+def win():
+    app = Application()
+    app.mainloop()
+def dan():
     asyncio.run(main())
+
+if __name__ == '__main__':
+    with open("data.txt", "w") as f:
+        pass
+    t1 = threading.Thread(target=win)
+    t2 = threading.Thread(target=dan)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
