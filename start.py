@@ -16,7 +16,7 @@ class MyHandler(blivedm.BaseHandler):
             f.write(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}\n')
 
 
-TEST_ROOM_IDS = [22637920, ]
+TEST_ROOM_IDS = [318, ]
 
 
 async def main():
