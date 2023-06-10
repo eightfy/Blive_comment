@@ -90,6 +90,9 @@
 									} else {
 										bottomButton.show();
 									}
+									if ($("#comments").prop("scrollHeight") - $("#comments").scrollTop()- $("#comments").innerHeight() <= 200) {
+										$("#comments").scrollTop($("#comments")[0].scrollHeight);
+									}
 								}
 							}
 						});
