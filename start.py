@@ -4,17 +4,7 @@ import asyncio
 import blivedm
 import tkinter as tk
 import threading
-
-
-class MyHandler(blivedm.BaseHandler):
-    async def _on_danmaku(self, client: blivedm.BLiveClient, message: blivedm.DanmakuMessage):
-        with open("data.txt", "a+") as f:
-            f.write(f'[{client.room_id}] {message.uname}：{message.msg}\n')
-
-    async def _on_super_chat(self, client: blivedm.BLiveClient, message: blivedm.SuperChatMessage):
-        with open("data.txt", "a+") as f:
-            f.write(f'[{client.room_id}] 醒目留言 ¥{message.price} {message.uname}：{message.message}\n')
-
+from message import MyHandler
 
 TEST_ROOM_IDS = [318, ]
 
