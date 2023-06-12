@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b1b;
+    color: #ffffff;
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#comments {
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.comment {
+    margin-bottom: 10px;
+}
+.author {
+    font-weight: bold;
+    color: #ffbd00;
+}
+.content {
+    margin-left: 10px;
+}
+.time {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+#bottom-button {
+    display: none;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px;
+    background-color: #ffbd00;
+    color: #000000;
+    cursor: pointer;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+/*display: none;*/
+::-webkit-scrollbar
+{
+    width: 16px;
+    height: 16px;
+    background-color: #1b1b1b;/*边角*/
+}
+ 
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #1b1b1b;/*背景*/
+}
+ 
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #F5F5F5;
+}
