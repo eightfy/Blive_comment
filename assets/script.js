@@ -27,12 +27,23 @@ $(document).ready(function() {
                     if (line.length > 0) {
                         var parts = line.split('：：');
                         if (parts.length >= 2) {
-                            var message = parts[1].substr(0, parts[1].length - 1);
-                            var html = `<div class="comment">
-                                <span class="author">${parts[0]}</span>
+                            var name = parts[0].split('] ');
+                            if (name.length >= 2) {
+                                var html = `<div class="comment">
+                                    <span class="medal">${name[0]}</span>
+                                    <span class="author">${name[1]}</span>
+                                    <span class="content">${message}</span>
+                                    <span class="time">${(new Date()).toLocaleTimeString()}</span>
+                                </div>`;
+                            }
+                            else {
+                                var html = `<div class="comment">
+                                <span class="author">${name[0]}</span>
                                 <span class="content">${message}</span>
                                 <span class="time">${(new Date()).toLocaleTimeString()}</span>
                             </div>`;
+                            }
+                            var message = parts[1].substr(0, parts[1].length - 1);
                             $("#comments").append(html);
                             //console.log(lastLineNum)
                             if (scrolling) {

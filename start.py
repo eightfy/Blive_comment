@@ -6,7 +6,10 @@ import tkinter as tk
 import threading
 from message import MyHandler
 
-TEST_ROOM_IDS = [318, ]
+TEST_ROOM_IDS = [
+    #1438243, 
+    22603245
+    ]
 
 
 async def main():
