@@ -28,6 +28,7 @@ $(document).ready(function() {
                         var parts = line.split('：：');
                         if (parts.length >= 2) {
                             var name = parts[0].split('] ');
+                            var message = parts[1].substr(0, parts[1].length - 1);
                             if (name.length >= 2) {
                                 var html = `<div class="comment">
                                     <span class="medal">${name[0]}</span>
@@ -43,7 +44,6 @@ $(document).ready(function() {
                                 <span class="time">${(new Date()).toLocaleTimeString()}</span>
                             </div>`;
                             }
-                            var message = parts[1].substr(0, parts[1].length - 1);
                             $("#comments").append(html);
                             //console.log(lastLineNum)
                             if (scrolling) {

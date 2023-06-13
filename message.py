@@ -13,7 +13,7 @@ class MyHandler(blivedm.BaseHandler):
         
     async def _on_buy_guard(self, client: blivedm.BLiveClient, message: blivedm.GuardBuyMessage):
         with open("data.txt", "a+") as f:
-            f.write(f' {message.username}：：购买{message.gift_name}\n')
+            f.write(f' {message.username}：：========购买{message.gift_name}========\n')
 
     async def _on_super_chat(self, client: blivedm.BLiveClient, message: blivedm.SuperChatMessage):
         with open("data.txt", "a+") as f:
