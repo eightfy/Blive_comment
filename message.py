@@ -4,7 +4,7 @@ class MyHandler(blivedm.BaseHandler):
 
     async def _on_danmaku(self, client: blivedm.BLiveClient, message: blivedm.DanmakuMessage):
         with open("data.txt", "a+") as f:
-            f.write(f'[{message.medal_name}{message.medal_level}] {message.uname}：：{message.msg}\n')
+            f.write(f'[{message.medal_name}{message.medal_level}]] {message.uname}：：{message.msg}\n')
 
     async def _on_gift(self, client: blivedm.BLiveClient, message: blivedm.GiftMessage):
         with open("data.txt", "a+") as f:

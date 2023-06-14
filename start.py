@@ -5,10 +5,12 @@ import blivedm
 import tkinter as tk
 import threading
 from message import MyHandler
+import datetime
 
 TEST_ROOM_IDS = [
+    23490978
     #1438243, 
-    22603245
+    #22603245
     ]
 
 
@@ -48,6 +50,8 @@ def dan():
 if __name__ == '__main__':
     with open("data.txt", "w") as f:
         pass
+    with open("data.txt", "a+") as f:
+        f.write(f'========== {datetime.datetime.now().strftime(" %Y-%m-%d ")}：：{datetime.datetime.now().strftime(" %H:%M:%S ")}==========\n')
     t1 = threading.Thread(target=win)
     t2 = threading.Thread(target=dan)
     t1.start()
