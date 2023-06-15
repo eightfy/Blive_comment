@@ -17,7 +17,7 @@ IGNORED_CMDS = (
     'ENTRY_EFFECT',
     'HOT_RANK_CHANGED',
     'HOT_RANK_CHANGED_V2',
-    'INTERACT_WORD',
+    # 'INTERACT_WORD', # 进入直播间
     'LIVE',
     'LIVE_INTERACTIVE_GAME',
     'NOTICE_MSG',
@@ -75,6 +75,9 @@ class BaseHandler(HandlerInterface):
     def __super_chat_message_delete_callback(self, client: client_.BLiveClient, command: dict):
         return self._on_super_chat_delete(client, models.SuperChatDeleteMessage.from_command(command['data']))
 
+    def __enter_room_callback(self, client: client_.BLiveClient, command: dict):
+        return self._on_enter_room(client, models.EnterMessage.from_command(command['data']))
+    
     _CMD_CALLBACK_DICT: Dict[
         str,
         Optional[Callable[
@@ -95,6 +98,8 @@ class BaseHandler(HandlerInterface):
         'SUPER_CHAT_MESSAGE': __super_chat_message_callback,
         # 删除醒目留言
         'SUPER_CHAT_MESSAGE_DELETE': __super_chat_message_delete_callback,
+        # 进入直播间
+        'INTERACT_WORD': __enter_room_callback,
     }
     """cmd -> 处理回调"""
     # 忽略其他常见cmd
@@ -147,4 +152,9 @@ class BaseHandler(HandlerInterface):
     async def _on_super_chat_delete(self, client: client_.BLiveClient, message: models.SuperChatDeleteMessage):
         """
         删除醒目留言
+        """
+
+    async def _on_enter_room(self, client: client_.BLiveClient, message: models.EnterMessage):
+        """
+        进入直播间
         """

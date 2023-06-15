@@ -10,6 +10,7 @@ __all__ = (
     'GuardBuyMessage',
     'SuperChatMessage',
     'SuperChatDeleteMessage',
+    'EnterMessage',
 )
 
 
@@ -380,4 +381,19 @@ class SuperChatDeleteMessage:
     def from_command(cls, data: dict):
         return cls(
             ids=data['ids'],
+        )
+
+@dataclasses.dataclass
+class EnterMessage:
+    """
+    进入消息
+    """
+
+    uname: str = None
+    """用户名"""
+
+    @classmethod
+    def from_command(cls, data: dict):
+        return cls(
+            uname=data['uname'],
         )

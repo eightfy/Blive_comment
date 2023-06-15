@@ -8,9 +8,10 @@ from message import MyHandler
 import datetime
 
 TEST_ROOM_IDS = [
-    23490978
+    22637920, #monaka
+    #23490978,
     #1438243, 
-    #22603245
+    #22603245,
     ]
 
 

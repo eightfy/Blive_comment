@@ -18,3 +18,7 @@ class MyHandler(blivedm.BaseHandler):
     async def _on_super_chat(self, client: blivedm.BLiveClient, message: blivedm.SuperChatMessage):
         with open("data.txt", "a+") as f:
             f.write(f' 醒目留言 ¥{message.price} {message.uname}：：{message.message}\n')
+
+    async def _on_enter_room(self, client: blivedm.BLiveClient, message: blivedm.EnterMessage):
+        with open("data.txt", "a+") as f:
+            f.write(f'///////进入直播间：：{message.uname}\n')
